@@ -14,6 +14,13 @@
         'l' => '<polygon points="5,110 95,110 75,90 25,90"',
         'o' => '<rect x="25" y="40" width="50" height="50"',
     ];
+    $surfaceAnteriorShapes = [
+        'm' => '<polygon points="5,20 25,65 25,65 5,110"',
+        'd' => '<polygon points="95,20 75,65 75,65 95,110"',
+        'v' => '<polygon points="95,20 75,65 25,65 5,20"',
+        'l' => '<polygon points="95,110 75,65 25,65 5,110"',
+        // 'o' => '<rect x="25" y="40" width="50" height="50"',
+    ];
     $conditionStyles = [
         'car' => 'fill="white" stroke="black" stroke-width="5"',
         'amf' => 'fill="black" stroke="none"',
@@ -36,12 +43,18 @@
     @endif
 
     @if (in_array((string) $tooth, $anteriorTeeth))
-        <polygon points="5,20 25,65 25,65 5,110" fill="none" stroke="black" />
-        <polygon points="95,20 75,65 75,65 95,110" fill="none" stroke="black" />
-        <polygon points="95,20 75,65 25,65 5,20" fill="none" stroke="black" />
-        <polygon points="95,110 75,65 25,65 5,110" fill="none" stroke="black" />
+        @foreach ($surfaceAnteriorShapes as $shape)
+            {!! $shape !!} fill="none" stroke="black" />
+        @endforeach
+
+        @foreach ($conditionStyles as $condition => $style)
+            @foreach ($surfaceAnteriorShapes as $surface => $shape)
+                @if ($conditions[$surface][$condition] ?? false)
+                    {!! $shape !!} {!! $style !!} />
+                @endif
+            @endforeach
+        @endforeach
     @else
-        <rect x="25" y="40" width="50" height="50" stroke="black" />
         @foreach ($surfaceShapes as $shape)
             {!! $shape !!} fill="none" stroke="black" />
         @endforeach
