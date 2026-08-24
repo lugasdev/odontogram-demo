@@ -223,8 +223,7 @@ new class extends Component {
                     </div>
                 </div>
                 <div class="rounded-lg border border-zinc-200 p-4 dark:border-zinc-700">
-                    <label class="text-sm font-medium">Keterangan Tambahan</label>
-                    <p class="mt-1 text-sm text-zinc-500">Simulasi odontogram dengan data contoh. Semua perubahan hanya tersimpan selama halaman terbuka.</p>
+                    <flux:textarea wire:model.live="note" label="Keterangan Tambahan" placeholder="Tuliskan keterangan tambahan (oklusi, diastema, gigi anomali, dll)..." rows="3" />
                 </div>
             </div>
         </section>
@@ -273,15 +272,15 @@ new class extends Component {
 
                 <section class="border-t border-zinc-200 pt-5 dark:border-zinc-700">
                     <h2 class="mb-3 text-sm font-bold text-blue-700 dark:text-blue-400">3. Kondisi Tambahan</h2>
-                    <flux:checkbox.group wire:model.live="extra" class="grid grid-cols-2 gap-2" :disabled="$disabled">
-                        <flux:checkbox value="nvt" label="Non Vital" />
-                        <flux:checkbox value="rct" label="Rct" />
-                        <flux:checkbox value="cfr" label="Fraktur" />
-                        <flux:checkbox value="ano" label="Anomali" />
-                        <flux:checkbox value="fmc" label="Fmc" />
-                        <flux:checkbox value="poc" label="Poc" />
-                        <flux:checkbox value="imp" label="Implant" />
-                        <flux:checkbox value="abu" label="Abutment" />
+                    <flux:checkbox.group wire:model.live="extra" class="grid grid-cols-4 gap-2" :disabled="$disabled">
+                        <flux:checkbox value="nvt" label="Non Vital" description="nvt" />
+                        <flux:checkbox value="rct" label="Rct" description="rct" />
+                        <flux:checkbox value="cfr" label="Fraktur" description="cfr" />
+                        <flux:checkbox value="ano" label="Anomali" description="ano" />
+                        <flux:checkbox value="fmc" label="Fmc" description="fmc" />
+                        <flux:checkbox value="poc" label="Poc" description="poc" />
+                        <flux:checkbox value="imp" label="Implant" description="imp" />
+                        <flux:checkbox value="abu" label="Abutment" description="abu" />
                     </flux:checkbox.group>
                 </section>
 
