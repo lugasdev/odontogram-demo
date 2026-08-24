@@ -18,3 +18,11 @@ test('tooth chart renders condition and eruption markers', function () {
     $view->assertSee('stroke-width="5"', false)
         ->assertSee('30,110 50,135 70,110', false);
 });
+
+test('odontogram simulation renders the full chart and selected tooth editor', function () {
+    $this->get('/gigi')
+        ->assertOk()
+        ->assertSee('Permanen')
+        ->assertSee('Gigi 46')
+        ->assertSee('Simpan Gigi 46');
+});
