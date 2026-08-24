@@ -25,7 +25,6 @@
         'm' => '<polygon points="95,20 75,65 75,65 95,110"',
         'v' => '<polygon points="95,20 75,65 25,65 5,20"',
         'l' => '<polygon points="95,110 75,65 25,65 5,110"',
-        // 'o' => '<rect x="25" y="40" width="50" height="50"',
     ];
     $conditionStyles = [
         'car' => 'fill="white" stroke="black" stroke-width="5"',
@@ -36,16 +35,11 @@
 
     $svgStyles = "";
     if (in_array($tooth, $topRight)) {
-        // $svgStyles = 'transform="scaleX(-1)"';
         $svgStyles = 'transform="translate(100,0) scale(-1,1)"';
-        // $svgStyles = 'transform: scaleX(-1);';
     } elseif (in_array($tooth, $bottomLeft)) {
         $svgStyles = 'transform="translate(0,130) scale(1,-1)"';
-        // $svgStyles = 'transform: scaleY(-1);';
     } elseif (in_array($tooth, $bottomRight)) {
         $svgStyles = 'transform="translate(100,130) scale(-1,-1)"';
-        // $svgStyles = 'transform="translate(100,140) scale(-1,-1)"';
-        // $svgStyles = 'transform: scaleX(-1) scaleY(-1);';
     }
 @endphp
 
