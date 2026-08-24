@@ -61,152 +61,28 @@ new class extends Component {
 
                     <div>
                         <flux:label>2. Kondisi Permukaan</flux:label>
-                        <div class="grid grid-cols-4 gap-4">
-                            <svg width="150" height="240" viewBox="0 0 100 140" fill="none"
-                                xmlns="http://www.w3.org/2000/svg" {{ $attributes }}>
-                                <defs>
-                                    <pattern id="arsir" width="5" height="6" patternUnits="userSpaceOnUse">
-                                        <line x1="3" y1="0" x2="3" y2="6" stroke="grey" stroke-width="1" />
-                                    </pattern>
-                                </defs>
-
-                                <rect x="5" y="20" width="90" height="90" stroke="black" />
-
-                                @if (in_array('poc', $extra))
-                                    <rect x="5" y="20" width="90" height="90" fill="url(#arsir)" />
-                                @endif
-
-                                @if (in_array($tooth, ['13', '12', '11', '21', '22', '23', '53', '52', '51', '61', '62', '63', '83', '82', '81', '71', '72', '73', '43', '42', '41', '31', '32', '33']))
-                                    <polygon points="5,20 25,65 25,65 5,110" fill="none" stroke="black" />
-                                    <polygon points="95,20 75,65 75,65 95,110" fill="none" stroke="black" />
-                                    <polygon points="95,20 75,65 25,65 5,20" fill="none" stroke="black" />
-                                    <polygon points="95,110 75,65 25,65 5,110" fill="none" stroke="black" />
-
-                                @else
-                                    <rect x="25" y="40" width="50" height="50" stroke="black" />
-
-                                    <polygon points="5,20 25,40 25,90 5,110" fill="none" stroke="black" />
-                                    <polygon points="95,20 75,40 75,90 95,110" fill="none" stroke="black" />
-                                    <polygon points="95,20 75,40 25,40 5,20" fill="none" stroke="black" />
-                                    <polygon points="5,110 95,110 75,90 25,90" fill="none" stroke="black" />
-
-                                    @if ($conditions['m']['car'] == true)
-                                        <polygon points="5,20 25,40 25,90 5,110" fill="none" stroke="black" stroke-width="5" />
-                                    @endif
-                                    @if ($conditions['d']['car'] == true)
-                                        <polygon points="95,20 75,40 75,90 95,110" fill="none" stroke="black"
-                                            stroke-width="5" />
-                                    @endif
-                                    @if ($conditions['v']['car'] == true)
-                                        <polygon points="95,20 75,40 25,40 5,20" fill="none" stroke="black" stroke-width="5" />
-                                    @endif
-                                    @if ($conditions['l']['car'] == true)
-                                        <polygon points="5,110 95,110 75,90 25,90" fill="none" stroke="black"
-                                            stroke-width="5" />
-                                    @endif
-                                    @if ($conditions['o']['car'] == true)
-                                        <rect x="25" y="40" width="50" height="50" fill="white" stroke="black"
-                                            stroke-width="5" />
-                                    @endif
-                                    @if ($conditions['m']['amf'] == true)
-                                        <polygon points="5,20 25,40 25,90 5,110" fill="black" stroke="none" />
-                                    @endif
-                                    @if ($conditions['d']['amf'] == true)
-                                        <polygon points="95,20 75,40 75,90 95,110" fill="black" stroke="none" />
-                                    @endif
-                                    @if ($conditions['v']['amf'] == true)
-                                        <polygon points="95,20 75,40 25,40 5,20" fill="black" stroke="none" />
-                                    @endif
-                                    @if ($conditions['l']['amf'] == true)
-                                        <polygon points="5,110 95,110 75,90 25,90" fill="black" stroke="none" />
-                                    @endif
-                                    @if ($conditions['o']['amf'] == true)
-                                        <rect x="25" y="40" width="50" height="50" fill="black" stroke="none" />
-                                    @endif
-                                    @if ($conditions['m']['cof'] == true)
-                                        <polygon points="5,20 25,40 25,90 5,110" fill="url(#arsir)" stroke="black" />
-                                    @endif
-                                    @if ($conditions['d']['cof'] == true)
-                                        <polygon points="95,20 75,40 75,90 95,110" fill="url(#arsir)" stroke="black" />
-                                    @endif
-                                    @if ($conditions['v']['cof'] == true)
-                                        <polygon points="95,20 75,40 25,40 5,20" fill="url(#arsir)" stroke="black" />
-                                    @endif
-                                    @if ($conditions['l']['cof'] == true)
-                                        <polygon points="5,110 95,110 75,90 25,90" fill="url(#arsir)" stroke="black" />
-                                    @endif
-                                    @if ($conditions['o']['cof'] == true)
-                                        <rect x="25" y="40" width="50" height="50" fill="url(#arsir)" stroke="black" />
-                                    @endif
-                                    @if ($conditions['m']['fis'] == true)
-                                        <polygon points="5,20 25,40 25,90 5,110" fill="pink" stroke="black" />
-                                    @endif
-                                    @if ($conditions['d']['fis'] == true)
-                                        <polygon points="95,20 75,40 75,90 95,110" fill="pink" stroke="black" />
-                                    @endif
-                                    @if ($conditions['v']['fis'] == true)
-                                        <polygon points="95,20 75,40 25,40 5,20" fill="pink" stroke="black" />
-                                    @endif
-                                    @if ($conditions['l']['fis'] == true)
-                                        <polygon points="5,110 95,110 75,90 25,90" fill="pink" stroke="black" />
-                                    @endif
-                                    @if ($conditions['o']['fis'] == true)
-                                        <rect x="25" y="40" width="50" height="50" fill="pink" stroke="black" />
-                                    @endif
-                                @endif
-
-                                @if ($erupsi === 'mis')
-                                    <!-- mis -->
-                                    <line x1="25" y1="10" x2="75" y2="120" stroke="black" stroke-width="5" />
-                                    <line x1="75" y1="10" x2="25" y2="120" stroke="black" stroke-width="5" />
-                                @endif
-                                @if ($erupsi === 'rrx')
-                                    <!-- rrx -->
-                                    <line x1="20" y1="15" x2="50" y2="125" stroke="black" stroke-width="5" />
-                                    <line x1="80" y1="5" x2="50" y2="125" stroke="black" stroke-width="5" />
-                                @endif
-                                @if ($erupsi === 'une')
-                                    <!-- une -->
-                                    <text x="50" y="13" dominant-baseline="middle" text-anchor="middle"
-                                        fill="black">UNE</text>
-                                @endif
-                                @if ($erupsi === 'pre')
-                                    <!-- pre -->
-                                    <text x="50" y="13" dominant-baseline="middle" text-anchor="middle"
-                                        fill="black">PRE</text>
-                                @endif
-
-                                @if (in_array('rct', $extra))
-                                    <polygon points="30,110 50,135 70,110" stroke="none" fill="black"></polygon>
-                                @endif
-                                @if (in_array('nvt', $extra))
-                                    <polygon points="30,110 50,135 70,110" fill="none" stroke="black"></polygon>
-                                @endif
-                                @if (in_array('cfr', $extra))
-                                    <text x="50" y="74" font-size="100" dominant-baseline="middle" text-anchor="middle"
-                                        fill="black" stroke="white"> # </text>
-                                @endif
-                                @if (in_array('ano', $extra))
-                                    <text x="50" y="13" dominant-baseline="middle" text-anchor="middle"
-                                        fill="black">ANO</text>
-                                @endif
-                                @if (in_array('fmc', $extra))
-                                    <rect x="5" y="20" width="90" height="90" stroke="black" stroke-width="5" />
-                                @endif
-                            </svg>
+                        <div class="grid grid-cols-4 gap-10">
+                            <div class="flex justify-center">
+                                <x-tooth-chart
+                                    :tooth="$tooth"
+                                    :erupsi="$erupsi"
+                                    :extra="$extra"
+                                    :conditions="$conditions"
+                                />
+                            </div>
                             <div class="col-span-3">
                                 <flux:table>
                                     <flux:table.columns>
-                                        <flux:table.column>Permukaan</flux:table.column>
-                                        <flux:table.column>Karies (car)</flux:table.column>
-                                        <flux:table.column>Amalgam (amf)</flux:table.column>
-                                        <flux:table.column>Composite (cof)</flux:table.column>
-                                        <flux:table.column>Sealant (fis)</flux:table.column>
+                                        <flux:table.column>&nbsp;</flux:table.column>
+                                        <flux:table.column class="text-wrap">Karies (car)</flux:table.column>
+                                        <flux:table.column class="text-wrap">Amalgam (amf)</flux:table.column>
+                                        <flux:table.column class="text-wrap">Composite (cof)</flux:table.column>
+                                        <flux:table.column class="text-wrap">Sealant (fis)</flux:table.column>
                                     </flux:table.columns>
 
                                     <flux:table.rows>
                                         <flux:table.row>
-                                            <flux:table.cell>M</flux:table.cell>
+                                            <flux:table.cell><b>M</b></flux:table.cell>
                                             <flux:table.cell>
                                                 <flux:checkbox value="1" wire:model.live="conditions.m.car"
                                                     :disabled="in_array($erupsi, ['une', 'mis', 'rrx'])" />
@@ -225,7 +101,7 @@ new class extends Component {
                                             </flux:table.cell>
                                         </flux:table.row>
                                         <flux:table.row>
-                                            <flux:table.cell>O</flux:table.cell>
+                                            <flux:table.cell><b>O</b></flux:table.cell>
                                             <flux:table.cell>
                                                 <flux:checkbox value="1" wire:model.live="conditions.o.car"
                                                     :disabled="in_array($erupsi, ['une', 'mis', 'rrx'])" />
@@ -244,7 +120,7 @@ new class extends Component {
                                             </flux:table.cell>
                                         </flux:table.row>
                                         <flux:table.row>
-                                            <flux:table.cell>D</flux:table.cell>
+                                            <flux:table.cell><b>D</b></flux:table.cell>
                                             <flux:table.cell>
                                                 <flux:checkbox value="1" wire:model.live="conditions.d.car"
                                                     :disabled="in_array($erupsi, ['une', 'mis', 'rrx'])" />
@@ -263,7 +139,7 @@ new class extends Component {
                                             </flux:table.cell>
                                         </flux:table.row>
                                         <flux:table.row>
-                                            <flux:table.cell>V</flux:table.cell>
+                                            <flux:table.cell><b>V</b></flux:table.cell>
                                             <flux:table.cell>
                                                 <flux:checkbox value="1" wire:model.live="conditions.v.car"
                                                     :disabled="in_array($erupsi, ['une', 'mis', 'rrx'])" />
@@ -282,7 +158,7 @@ new class extends Component {
                                             </flux:table.cell>
                                         </flux:table.row>
                                         <flux:table.row>
-                                            <flux:table.cell>L</flux:table.cell>
+                                            <flux:table.cell><b>L</b></flux:table.cell>
                                             <flux:table.cell>
                                                 <flux:checkbox value="1" wire:model.live="conditions.l.car"
                                                     :disabled="in_array($erupsi, ['une', 'mis', 'rrx'])" />

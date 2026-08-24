@@ -11,3 +11,10 @@ test('guest users can render the desktop user menu', function () {
 
     $view->assertDontSee('sidebar-menu-button');
 });
+
+test('tooth chart renders condition and eruption markers', function () {
+    $view = $this->blade('<x-tooth-chart :tooth="14" erupsi="mis" :extra="[\'rct\']" :conditions="[\'m\' => [\'car\' => true]]" />');
+
+    $view->assertSee('stroke-width="5"', false)
+        ->assertSee('30,110 50,135 70,110', false);
+});
