@@ -149,6 +149,7 @@ new class extends Component {
 }; ?>
 
 @php
+    $anteriorTeeth = ['13', '12', '11', '21', '22', '23', '53', '52', '51', '61', '62', '63', '83', '82', '81', '71', '72', '73', '43', '42', '41', '31', '32', '33'];
     $quadrants = $dentition === 'permanent'
         ? [
             ['18', '17', '16', '15', '14', '13', '12', '11'],
@@ -165,6 +166,10 @@ new class extends Component {
     $disabled = in_array($erupsi, ['une', 'mis', 'rrx']);
     $surfaceLabels = ['m' => 'M', 'o' => 'O', 'd' => 'D', 'v' => 'V', 'l' => 'L'];
     $conditionLabels = ['car' => 'Karies', 'amf' => 'Amalgam', 'cof' => 'Composite', 'fis' => 'Sealant'];
+
+    if (in_array($tooth, $anteriorTeeth)) {
+        unset($surfaceLabels['o']);
+    }
 @endphp
 
 <div class="min-h-screen bg-zinc-50 p-4 text-zinc-800 dark:bg-zinc-950 dark:text-zinc-100 sm:p-6">
@@ -245,10 +250,24 @@ new class extends Component {
                         <x-tooth-chart :tooth="$tooth" :erupsi="$erupsi" :extra="$extra" :conditions="$conditions" class="h-36 w-28" />
                         <div class="overflow-x-auto">
                             <table class="w-full min-w-72 border-collapse text-center text-xs">
-                                <thead><tr class="bg-zinc-50 dark:bg-zinc-800"><th class="border border-zinc-200 p-2 dark:border-zinc-700">Permukaan</th>@foreach ($conditionLabels as $label)<th class="border border-zinc-200 p-2 dark:border-zinc-700">{{ $label }}</th>@endforeach</tr></thead>
+                                <thead>
+                                    <tr class="bg-zinc-50 dark:bg-zinc-800">
+                                        <th class="border border-zinc-200 p-2 dark:border-zinc-700">Permukaan</th>
+                                        @foreach ($conditionLabels as $surface => $label)
+                                            <th class="border border-zinc-200 p-2 dark:border-zinc-700">{{ $label }}<br>({{ $surface }})</th>
+                                        @endforeach
+                                    </tr>
+                                </thead>
                                 <tbody>
                                     @foreach ($surfaceLabels as $surface => $label)
-                                        <tr wire:key="surface-{{ $surface }}"><th class="border border-zinc-200 p-2 dark:border-zinc-700">{{ $label }}</th>@foreach ($conditionLabels as $condition => $conditionLabel)<td class="border border-zinc-200 p-1 dark:border-zinc-700"><flux:checkbox wire:model.live="conditions.{{ $surface }}.{{ $condition }}" :disabled="$disabled" /></td>@endforeach</tr>
+                                        <tr wire:key="surface-{{ $surface }}">
+                                            <th class="border border-zinc-200 p-2 dark:border-zinc-700">{{ $label }}</th>
+                                            @foreach ($conditionLabels as $condition => $conditionLabel)
+                                                <td class="border border-zinc-200 p-1 dark:border-zinc-700 " align="center">
+                                                    <flux:checkbox wire:model.live="conditions.{{ $surface }}.{{ $condition }}" :disabled="$disabled" />
+                                                </td>
+                                            @endforeach
+                                        </tr>
                                     @endforeach
                                 </tbody>
                             </table>
@@ -266,7 +285,7 @@ new class extends Component {
                         <flux:checkbox value="ano" label="Anomali" description="ano" />
                         <flux:checkbox value="fmc" label="Fmc" description="fmc" />
                         <flux:checkbox value="poc" label="Poc" description="poc" />
-                        <flux:checkbox value="imp" label="Implant" description="imp" />
+                        <flux:checkbox value="ipx" label="Implant" description="ipx" />
                         <flux:checkbox value="abu" label="Abutment" description="abu" />
                     </flux:checkbox.group>
                 </section>

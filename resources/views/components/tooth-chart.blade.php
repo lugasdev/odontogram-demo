@@ -32,7 +32,7 @@
 <svg width="100" height="140" viewBox="0 0 100 140" fill="none" xmlns="http://www.w3.org/2000/svg" {{ $attributes }}>
     <defs>
         <pattern id="arsir" width="5" height="6" patternUnits="userSpaceOnUse">
-            <line x1="3" y1="0" x2="3" y2="6" stroke="grey" stroke-width="1" />
+            <line x1="3" y1="0" x2="3" y2="6" stroke="grey" stroke-width="1" fill="none" />
         </pattern>
     </defs>
 
@@ -83,6 +83,9 @@
         <text x="50" y="13" dominant-baseline="middle" text-anchor="middle" fill="black">PRE</text>
     @endif
 
+    @if (in_array('ipx', $extra))
+        <text x="50" y="120" dominant-baseline="middle" text-anchor="middle" fill="black">IPX</text>
+    @endif
     @if (in_array('rct', $extra))
         <polygon points="30,110 50,135 70,110" stroke="none" fill="black" />
     @endif
