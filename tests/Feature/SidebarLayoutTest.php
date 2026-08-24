@@ -24,5 +24,5 @@ test('odontogram simulation renders the full chart and selected tooth editor', f
         ->assertOk()
         ->assertSee('Permanen')
         ->assertSee('Gigi 46')
-        ->assertSee('Simpan Gigi 46');
+        ->assertSee('Tersimpan otomatis dalam simulasi.');
 });

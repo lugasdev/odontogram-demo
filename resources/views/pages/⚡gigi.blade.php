@@ -5,7 +5,7 @@ use Livewire\Component;
 
 new class extends Component {
     public string $dentition = 'permanent';
-    public string $tooth = '46';
+    public string $tooth = '18';
     public string $erupsi = 'sou';
     public array $extra = [];
     public array $conditions = [];
@@ -36,30 +36,17 @@ new class extends Component {
         $this->saved = false;
     }
 
-    public function saveTooth(): void
+    public function updated(string $property): void
     {
-        $this->storeCurrentTooth();
-        $this->saved = true;
-    }
-
-    public function updatedErupsi(): void
-    {
-        if (in_array($this->erupsi, ['une', 'mis', 'rrx'])) {
+        if ($property === 'erupsi' && in_array($this->erupsi, ['une', 'mis', 'rrx'])) {
             $this->conditions = $this->emptyConditions();
             $this->extra = [];
         }
 
-        $this->saved = false;
-    }
-
-    public function updatedExtra(): void
-    {
-        $this->saved = false;
-    }
-
-    public function updatedConditions(): void
-    {
-        $this->saved = false;
+        if (in_array($property, ['erupsi', 'extra', 'conditions', 'note']) || str_starts_with($property, 'conditions.')) {
+            $this->storeCurrentTooth();
+            $this->saved = true;
+        }
     }
 
     #[Computed]
@@ -289,10 +276,10 @@ new class extends Component {
                 </section>
             </div>
 
-            <div class="flex items-center justify-end gap-3 border-t border-zinc-200 p-5 dark:border-zinc-700">
-                @if ($saved)<span class="mr-auto text-sm font-medium text-emerald-600">Tersimpan dalam simulasi.</span>@endif
-                <flux:button wire:click="resetTooth" variant="filled">Batal</flux:button>
-                <flux:button wire:click="saveTooth" variant="primary">Simpan Gigi {{ $tooth }}</flux:button>
+            <div class="flex items-center justify-between border-t border-zinc-200 p-5 dark:border-zinc-700">
+                <span class="text-sm font-medium text-emerald-600" wire:loading.remove>Tersimpan otomatis dalam simulasi.</span>
+                <span class="text-sm text-zinc-500" wire:loading>Menyimpan perubahan...</span>
+                <flux:button wire:click="resetTooth" variant="filled">Reset Gigi</flux:button>
             </div>
         </aside>
     </div>
