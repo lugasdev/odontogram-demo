@@ -196,10 +196,10 @@ new class extends Component {
                         @foreach ($quadrant as $number)
                         @php($record = $toothRecords[$number])
                         <button wire:click="selectTooth('{{ $number }}')" wire:key="tooth-{{ $number }}"
-                            class="rounded-lg p-1 text-center transition {{ $tooth === $number ? 'bg-blue-50 ring-2 ring-blue-600 dark:bg-blue-950' : 'hover:bg-zinc-100 dark:hover:bg-zinc-800' }}">
+                            class="rounded-lg py-2 text-center transition {{ $tooth === $number ? 'bg-blue-50 ring-2 ring-blue-600 dark:bg-blue-950' : 'hover:bg-zinc-100 dark:hover:bg-zinc-800' }}">
                             <span class="block text-xs font-semibold">{{ $number }}</span>
                             <x-tooth-chart :tooth="$number" :erupsi="$record['erupsi']" :extra="$record['extra']"
-                                :conditions="$record['conditions']" class="mx-auto h-12 w-9" />
+                                :conditions="$record['conditions']" class="mx-auto max-h-20 w-full" />
                             {{-- <span class="block truncate text-[10px] text-zinc-500">{{ $record['erupsi'] }}</span>
                             --}}
                         </button>
@@ -277,7 +277,7 @@ new class extends Component {
                         <flux:radio value="sou" label="Sou" description="Normal" />
                         <flux:radio value="pre" label="Pre" description="Sebagian" />
                         <flux:radio value="une" label="Une" description="Belum erupsi" />
-                        <flux:radio value="imv" label="Imv" description="Impaksi" />
+                        <flux:radio value="imv" label="Imv" description="Impacted Visible" />
                         <flux:radio value="mis" label="Mis" description="Hilang" />
                         <flux:radio value="rrx" label="Rrx" description="Sisa akar" />
                     </flux:radio.group>
@@ -287,7 +287,7 @@ new class extends Component {
                     <h2 class="mb-3 text-sm font-bold text-blue-700 dark:text-blue-400">2. Kondisi Permukaan</h2>
                     <div class="grid grid-cols-[7rem_1fr] items-center gap-3">
                         <x-tooth-chart :tooth="$tooth" :erupsi="$erupsi" :extra="$extra" :conditions="$conditions"
-                            class="h-36 w-28" />
+                            class="max-h-36 w-full" />
                         <div class="overflow-x-auto">
                             <table class="w-full min-w-72 border-collapse text-center text-xs">
                                 <thead>

@@ -43,7 +43,7 @@
     }
 @endphp
 
-<svg width="100" height="140" viewBox="0 0 100 140" fill="none" xmlns="http://www.w3.org/2000/svg" {{ $attributes }} >
+<svg viewBox="0 0 100 140" fill="none" xmlns="http://www.w3.org/2000/svg" {{ $attributes }} >
     <defs>
         <pattern id="arsir" width="5" height="6" patternUnits="userSpaceOnUse">
             <line x1="3" y1="0" x2="3" y2="6" stroke="grey" stroke-width="1" fill="none" />
@@ -85,8 +85,9 @@
     </g>
 
     @if ($erupsi === 'mis')
-        <line x1="25" y1="10" x2="75" y2="120" stroke="black" stroke-width="5" />
-        <line x1="75" y1="10" x2="25" y2="120" stroke="black" stroke-width="5" />
+        <text x="50" y="80" font-size="140" dominant-baseline="middle" text-anchor="middle" fill="red" stroke="white"> X </text>
+        {{-- <line x1="25" y1="10" x2="75" y2="120" stroke="black" stroke-width="5" />
+        <line x1="75" y1="10" x2="25" y2="120" stroke="black" stroke-width="5" /> --}}
     @endif
     @if ($erupsi === 'rrx')
         <line x1="20" y1="15" x2="50" y2="125" stroke="black" stroke-width="5" />
@@ -97,6 +98,9 @@
     @endif
     @if ($erupsi === 'pre')
         <text x="50" y="13" dominant-baseline="middle" text-anchor="middle" fill="black">PRE</text>
+    @endif
+    @if ($erupsi === 'imv')
+        <text x="50" y="13" dominant-baseline="middle" text-anchor="middle" fill="black">IMV</text>
     @endif
 
     @if (in_array('ipx', $extra))
