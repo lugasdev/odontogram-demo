@@ -39,7 +39,7 @@
     <rect x="5" y="20" width="90" height="90" stroke="black" />
 
     @if (in_array('poc', $extra))
-        <rect x="5" y="20" width="90" height="90" fill="url(#arsir)" />
+        <rect x="5" y="20" width="90" height="90" fill="url(#arsir)" stroke="black" stroke-width="4" />
     @endif
 
     @if (in_array((string) $tooth, $anteriorTeeth))
