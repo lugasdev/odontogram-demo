@@ -3,7 +3,8 @@
 use Livewire\Attributes\Computed;
 use Livewire\Component;
 
-new class extends Component {
+new class extends Component
+{
     public string $dentition = 'permanent';
     public string $tooth = '18';
     public string $erupsi = 'sou';
@@ -322,14 +323,17 @@ new class extends Component {
                 <section class="border-t border-zinc-200 pt-5 dark:border-zinc-700">
                     <h2 class="mb-3 text-sm font-bold text-blue-700 dark:text-blue-400">3. Kondisi Tambahan</h2>
                     <flux:checkbox.group wire:model.live="extra" class="grid grid-cols-4 gap-2" :disabled="$disabled">
-                        <flux:checkbox value="nvt" label="Non Vital" description="nvt" />
-                        <flux:checkbox value="rct" label="Rct" description="rct" />
-                        <flux:checkbox value="cfr" label="Fraktur" description="cfr" />
-                        <flux:checkbox value="ano" label="Anomali" description="ano" />
-                        <flux:checkbox value="fmc" label="Fmc" description="fmc" />
-                        <flux:checkbox value="poc" label="Poc" description="poc" />
-                        <flux:checkbox value="ipx" label="Implant" description="ipx" />
-                        <flux:checkbox value="abu" label="Abutment" description="abu" />
+                        <flux:checkbox value="nvt" label="nvt" description="Gigi Non Vital" />
+                        <flux:checkbox value="rct" label="rct" description="Root Canal Treatment" />
+                        <flux:checkbox value="cfr" label="cfr" description="Crown Fracture" />
+                        <flux:checkbox value="ano" label="ano" description="Anomali" />
+                        <flux:checkbox value="fmc" label="fmc" description="Full Metal Crown" />
+                        <flux:checkbox value="poc" label="poc" description="Porcelain Crown" />
+                        <flux:checkbox value="mpc" label="mpc" description="Metal Porcelain Crown" />
+                        <flux:checkbox value="ipx" label="ipx" description="Implant" />
+                        <flux:checkbox value="abu" label="abu" description="Abutment" />
+                        <flux:checkbox value="meb" label="meb" description="Metal Bridge" />
+                        <flux:checkbox value="pob" label="pob" description="Porcelain Bridge" />
                     </flux:checkbox.group>
                 </section>
 

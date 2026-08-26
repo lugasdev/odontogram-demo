@@ -55,6 +55,9 @@
     @if (in_array('poc', $extra))
         <rect x="5" y="20" width="90" height="90" fill="url(#arsir)" stroke="black" stroke-width="4" />
     @endif
+    @if (in_array('mpc', $extra))
+        <rect x="5" y="20" width="90" height="90" fill="url(#arsir)" stroke="black" stroke-width="4" />
+    @endif
 
     <g {!! $svgStyles !!}>
         @if (in_array((string) $tooth, $anteriorTeeth))
@@ -119,6 +122,12 @@
         <text x="50" y="13" dominant-baseline="middle" text-anchor="middle" fill="black">ANO</text>
     @endif
     @if (in_array('fmc', $extra))
+        <rect x="5" y="20" width="90" height="90" stroke="black" stroke-width="5" />
+    @endif
+    @if (in_array('meb', $extra))
+        <rect x="5" y="20" width="90" height="90" stroke="black" stroke-width="5" />
+    @endif
+    @if (in_array('pob', $extra))
         <rect x="5" y="20" width="90" height="90" stroke="black" stroke-width="5" />
     @endif
 </svg>
